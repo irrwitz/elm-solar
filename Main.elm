@@ -38,11 +38,11 @@ updateModel model action =
         }
     , mercury =
         { mercury
-          | form = move (fromPolar ( mercury.distance, degrees action / 14 )) mercury.form
+          | form = move (fromPolar ( mercury.distance, degrees action / 10.5 )) mercury.form
         }
     , venus =
         { venus
-          | form = move (fromPolar ( venus.distance, degrees action / 10 )) venus.form
+          | form = move (fromPolar ( venus.distance, degrees action / 25.89 )) venus.form
         }
     , earth =
         { earth
@@ -56,15 +56,15 @@ updateModel model action =
         }
     , mars =
         { mars
-          | form = move (fromPolar ( mars.distance, degrees action / 40 )) mars.form
+          | form = move (fromPolar ( mars.distance, degrees action / 84 )) mars.form
         }
   }
 
 
 moveMoon action moon =
   moon.form
-    |> move (fromPolar ( 100, degrees action / 42 ))
-    |> move (fromPolar ( 15, degrees action / 4 ))
+    |> move (fromPolar ( 130, degrees action / 42 ))
+    |> move (fromPolar ( 14, degrees action / 4 ))
 
 
 main =
@@ -74,9 +74,10 @@ main =
 view : Model -> Element
 view model =
   collage
-    400
-    400
-    [ model.sun.form
+    500
+    500
+    [ filled black <| rect 500 500
+    , model.sun.form
     , model.mercury.form
     , model.venus.form
     , model.earth.form
